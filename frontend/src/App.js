@@ -1,11 +1,11 @@
-import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import AddReview from './components/add-review';
-import RestaurantsList from './components/restaurants-list';
-import Restaurant from './components/restaurants';
-import Login from './components/login';
+import AddReview from "./components/add-review";
+import Restaurant from "./components/restaurants";
+import RestaurantsList from "./components/restaurants-list";
+import Login from "./components/login";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -15,14 +15,14 @@ function App() {
   }
 
   async function logout() {
-    setUser(null);
+    setUser(null)
   }
 
   return (
-    <div className="App">
+    <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/restaurants" className="navbar-brand">
-          Restaurants Reviews
+          Restaurant Reviews
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -30,7 +30,7 @@ function App() {
               Restaurants
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" >
             {user ? (
               <a onClick={logout} className="nav-link" style={{ cursor: 'pointer' }}>
                 Logout {user.name}
@@ -40,17 +40,14 @@ function App() {
                 Login
               </Link>
             )}
+
           </li>
         </div>
       </nav>
 
       <div className="container mt-3">
         <Switch>
-          <Route
-            exact
-            path={["/", "/restaurants"]}
-            component={RestaurantsList}
-          />
+          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
           <Route
             path="/restaurants/:id/review"
             render={(props) => (
