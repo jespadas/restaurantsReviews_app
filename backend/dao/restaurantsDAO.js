@@ -9,9 +9,9 @@ export default class RestaurantsDAO {
         }
         try {
             restaurants = await conn.db(process.env.RESTREVIEWS_NS).collection("restaurants")
-        } catch (err) {
+        } catch (e) {
             console.error(
-                `Unable to establish a collection handle in restaurantsDAO: ${err}`,
+                `Unable to establish a collection handle in restaurantsDAO: ${e}`,
             )
         }
     }
@@ -37,8 +37,8 @@ export default class RestaurantsDAO {
         try {
             cursor = await restaurants
                 .find(query)
-        } catch (err) {
-            console.error(`Unable to issue find command, ${err}`)
+        } catch (e) {
+            console.error(`Unable to issue find command, ${e}`)
             return { restaurantsList: [], totalNumRestaurants: 0 }
         }
 
@@ -49,9 +49,9 @@ export default class RestaurantsDAO {
             const totalNumRestaurants = await restaurants.countDocuments(query)
 
             return { restaurantsList, totalNumRestaurants }
-        } catch (err) {
+        } catch (e) {
             console.error(
-                `Unable to convert cursor to array or problem counting documents, ${err}`,
+                `Unable to convert cursor to array or problem counting documents, ${e}`,
             )
             return { restaurantsList: [], totalNumRestaurants: 0 }
         }
@@ -94,9 +94,9 @@ export default class RestaurantsDAO {
                 },
             ]
             return await restaurants.aggregate(pipeline).next()
-        } catch (err) {
-            console.error(`Something went wrong in getRestaurantByID: ${err}`)
-            throw err
+        } catch (e) {
+            console.error(`Something went wrong in getRestaurantByID: ${e}`)
+            throw e
         }
     }
 
@@ -105,8 +105,8 @@ export default class RestaurantsDAO {
         try {
             cuisines = await restaurants.distinct("cuisine")
             return cuisines
-        } catch (err) {
-            console.error(`Unable to get cuisines, ${err}`)
+        } catch (e) {
+            console.error(`Unable to get cuisines, ${e}`)
             return cuisines
         }
     }

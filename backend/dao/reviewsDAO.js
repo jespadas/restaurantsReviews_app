@@ -10,8 +10,8 @@ export default class ReviewsDAO {
         }
         try {
             reviews = await conn.db(process.env.RESTREVIEWS_NS).collection("reviews")
-        } catch (err) {
-            console.error(`Unable to establish collection handles in userDAO: ${err}`)
+        } catch (e) {
+            console.error(`Unable to establish collection handles in userDAO: ${e}`)
         }
     }
 
@@ -26,9 +26,9 @@ export default class ReviewsDAO {
             }
 
             return await reviews.insertOne(reviewDoc)
-        } catch (err) {
-            console.error(`Unable to post review: ${err}`)
-            return { error: err }
+        } catch (e) {
+            console.error(`Unable to post review: ${e}`)
+            return { error: e }
         }
     }
 
@@ -40,9 +40,9 @@ export default class ReviewsDAO {
             )
 
             return updateResponse
-        } catch (err) {
-            console.error(`Unable to update review: ${err}`)
-            return { error: err }
+        } catch (e) {
+            console.error(`Unable to update review: ${e}`)
+            return { error: e }
         }
     }
 
@@ -55,9 +55,9 @@ export default class ReviewsDAO {
             })
 
             return deleteResponse
-        } catch (err) {
-            console.error(`Unable to delete review: ${err}`)
-            return { error: err }
+        } catch (e) {
+            console.error(`Unable to delete review: ${e}`)
+            return { error: e }
         }
     }
 

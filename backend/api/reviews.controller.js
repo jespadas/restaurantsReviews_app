@@ -18,8 +18,8 @@ export default class ReviewsController {
                 date,
             )
             res.json({ status: "success" })
-        } catch (err) {
-            res.status(500).json({ error: err.message })
+        } catch (e) {
+            res.status(500).json({ error: e.message })
         }
     }
 
@@ -48,8 +48,8 @@ export default class ReviewsController {
             }
 
             res.json({ status: "success" })
-        } catch (err) {
-            res.status(500).json({ error: err.message })
+        } catch (e) {
+            res.status(500).json({ error: e.message })
         }
     }
 
@@ -63,8 +63,8 @@ export default class ReviewsController {
                 userId,
             )
             res.json({ status: "success" })
-        } catch (err) {
-            res.status(500).json({ error: err.message })
+        } catch (e) {
+            res.status(500).json({ error: e.message })
         }
     }
 
