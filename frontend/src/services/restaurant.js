@@ -1,4 +1,4 @@
-import http from '../http-common';
+import http from "../http-common";
 
 class RestaurantDataService {
     getAll(page = 0) {
@@ -6,7 +6,7 @@ class RestaurantDataService {
     }
 
     get(id) {
-        return http.get(`/restaurant?id=${id}`)
+        return http.get(`/restaurant?id=${id}`);
     }
 
     find(query, by = "name", page = 0) {
@@ -18,16 +18,17 @@ class RestaurantDataService {
     }
 
     updateReview(data) {
-        return http.post("/review-edit", data);
+        return http.put("/review-edit", data);
     }
 
-    deleteReview(data) {
-        return http.delete(`/review-delete?id=${id}`, { data: { user_id: userID } });
+    deleteReview(id, userId) {
+        return http.delete(`/review-delete?id=${id}`, { data: { user_id: userId } });
     }
 
-    getCuisines(id) {
-        return http.get("/cuisines");
+    getCuisines() {
+        return http.get(`/cuisines`);
     }
+
 }
 
 export default new RestaurantDataService();
