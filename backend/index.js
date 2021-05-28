@@ -21,7 +21,7 @@ MongoClient.connect(
         console.error(err.stack)
         process.exit(1)
     })
-    .then(async (client, conn) => {
+    .then(async (client) => {
         await RestaurantsDAO.injectDB(client)
         await ReviewsDAO.injectDB(client)
         app.listen(port, () => {
